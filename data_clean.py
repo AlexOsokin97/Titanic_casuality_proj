@@ -49,4 +49,3 @@ df = df_train.copy()
 
 #changing all na values in the 'Age' column to -1
 df['Age'] = df['Age'].apply(lambda x: -1 if pd.isna(x) else x)
-df['Age'].loc[(df['Sex'] == 'female') & (df['Pclass'] == 1)].apply(lambda x: female_1class_mean if x==-1 else x)
