@@ -15,8 +15,6 @@ df_test = pd.read_csv("test.csv")
 #change the embarked column info to C = Cherbourg, Q = Queenstown, S = Southampton
 #dropping the "cabin" column because too much information is missing
 
-
-
 ###df_train cleaning
 
 #for each Pclass(3) find the mean of female age and male age.
@@ -48,4 +46,7 @@ male_3class_mean = int(filt['Age'].mean())
 
 #fill the missing Age data 
 df = df_train.copy()
-df = df_train.apply(lambda x: female_1class_mean if x['Pclass']==1 & x['Sex'].lower()=='female' & isinstance(x['Age'],int) else x['Age'])
+
+#changing all na values in the 'Age' column to -1
+df['Age'] = df['Age'].apply(lambda x: -1 if pd.isna(x) else x)
+df['Age'].loc[(df['Sex'] == 'female') & (df['Pclass'] == 1)].apply(lambda x: female_1class_mean if x==-1 else x)
