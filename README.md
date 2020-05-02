@@ -1,8 +1,10 @@
-A data science project on the titanic passenger's info database
+# Titanic Survival Estimator: Project Overview #
 
-## Resources
-https://www.kaggle.com/c/titanic/data - Where you can download the original data set
+## Code and Resources:
+***Python Version:*** 3.8.2
+***Packages:*** Pandas, Numpy, Matplotlib, Seaborn
+***IDES Used:***: Anaconda, Spyder, Jupyter-Notebook
+***Original Data Set:***: <https://www.kaggle.com/c/titanic/data>
+***Documentation:*** <http://seaborn.pydata.org/examples/>
+                     <https://pandas.pydata.org/docs/user_guide/>
     
-http://seaborn.pydata.org/examples/ - Seaborn plot examples and documentation
-
-https://pandas.pydata.org/docs/user_guide/ - pandas library documentation
