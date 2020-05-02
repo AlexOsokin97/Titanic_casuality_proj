@@ -1,4 +1,7 @@
 # Titanic Survival Estimator: Project Overview #
+* **Was the survival of some Titanic's passangers a mere coincidence? Or there were certain conditions that had major**
+**role in deciding the passanger's fate?**
+* **Used over 1000 samples of Titanic passanger's information from Kaggle**
 
 ## Code and Resources Used
 * ***Python Version:*** 3.8.2
