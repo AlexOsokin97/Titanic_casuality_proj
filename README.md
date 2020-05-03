@@ -5,7 +5,7 @@
 
 ## Code and Resources Used
 * ***Python Version:*** 3.8.2
-* ***Packages:*** Pandas, Numpy, Matplotlib, Seaborn
+* ***Packages:*** Pandas, Numpy, Matplotlib, Seaborn, sklearn, statsmodels
 * ***IDES Used:*** Anaconda, Spyder, Jupyter-Notebook
 * ***Youtube:*** Videos and explainations from Ken Jee who is a data scientist. You can look up his channel [Here](https://www.youtube.com/channel/UCiT9RITQ9PW6BhXK0y2jaeg)
 * ***Original Data Set:*** <https://www.kaggle.com/c/titanic/data>
