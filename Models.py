@@ -19,7 +19,7 @@ df_test['Embarked'] = df_test['Embarked'].apply(lambda x: 'Queenstown' if x =='Q
 #choosing relevant columns
 df_model = df_train[['Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked']]
 
-#create dums
+#create dummy variables
 df_dums = pd.get_dummies(df_model)
 
 #creating the dependent(y) and independent(X) variables
@@ -46,8 +46,8 @@ X_test[:,4:5] = sc.transform(X_test[:,4:5])
 #Logistic Regression using sklearn
 from sklearn.linear_model import LogisticRegression
 clf = LogisticRegression(random_state=0).fit(X_train, y_train)
-x_predict = clf.predict(X_test)
-lr_score = clf.score(X_test, y_train)
+accuarcy = clf.score(X_train, y_train)
+
 
 
 
