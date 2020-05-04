@@ -108,3 +108,8 @@ knn_cm = confusion_matrix(y_test,knn_y_predict)
 
 #finding the accuarcy of the svm model
 knn_score = accuracy_score(y_test,knn_y_predict)
+
+#saving our best preformed model: SVM
+import pickle
+filename = 'finalized_SVM_model.sav'
+pickle.dump(svm_clf_poly, open(filename, 'wb'))
