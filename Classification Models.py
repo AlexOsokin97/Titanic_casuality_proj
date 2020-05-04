@@ -48,3 +48,63 @@ y_predict = classifier.predict(X_test)
 from sklearn.metrics import confusion_matrix
 classifier_cm = confusion_matrix(y_test, y_predict)
 
+#finding the accuarcy score of the logistic regression:
+from sklearn.metrics import accuracy_score
+classifier_score = accuracy_score(y_test, y_predict)
+
+#using svm and fitting it to x and y training sets
+#using kernel='poly'
+from sklearn.svm import SVC
+svm_clf_poly = SVC(kernel='poly', degree=3, gamma='auto')
+svm_clf_poly.fit(X_train, y_train)
+
+#predicting with the svm model
+svmP_y_predict = svm_clf_poly.predict(X_test) 
+
+#creating confusion matrix for the svm model
+svmP_cm = confusion_matrix(y_test,svmP_y_predict)
+
+#finding the accuarcy of the svm model
+svmP_score = accuracy_score(y_test, svmP_y_predict)
+
+#using svm and fitting it to x and y training sets
+#using kernel='sigmoid'
+svm_clf_sigmoid = SVC(kernel='sigmoid', gamma='scale')
+svm_clf_sigmoid.fit(X_train, y_train)
+
+#predicting with the svm model
+svmS_y_predict = svm_clf_poly.predict(X_test) 
+
+#creating confusion matrix for the svm model
+svmS_cm = confusion_matrix(y_test,svmS_y_predict)
+
+#finding the accuarcy of the svm model
+svmS_score = accuracy_score(y_test, svmS_y_predict)
+
+#using randomforestclassifier and fitting it to x and y training sets
+from sklearn.ensemble import RandomForestClassifier
+rf_classifier = RandomForestClassifier(n_estimators=200, criterion="entropy")
+rf_classifier.fit(X_train, y_train)
+
+#predicting with randomforestclassifier model
+rfc_y_predict = rf_classifier.predict(X_test)
+
+#creating confusion matrix for the svm model
+rfc_cm = confusion_matrix(y_test,rfc_y_predict)
+
+#finding the accuarcy of the svm model
+rfc_score = accuracy_score(y_test,rfc_y_predict)
+
+#using KNN and fitting it to x and y training sets
+from sklearn.neighbors import KNeighborsClassifier
+knn_classifier = KNeighborsClassifier(n_neighbors=8, metric='minkowski',p=2)
+knn_classifier.fit(X_train, y_train)
+
+#predicting with KNN model
+knn_y_predict = knn_classifier.predict(X_test)
+
+#creating confusion matrix for the svm model
+knn_cm = confusion_matrix(y_test,knn_y_predict)
+
+#finding the accuarcy of the svm model
+knn_score = accuracy_score(y_test,knn_y_predict)
