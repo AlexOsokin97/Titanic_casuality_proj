@@ -12,9 +12,9 @@
 ## Youtube:
 * ***Youtube:*** Videos and explainations from Ken Jee who is a data scientist. You can look up his channel [Here](https://www.youtube.com/channel/UCiT9RITQ9PW6BhXK0y2jaeg)
 
-## Documentations and Datasets:
+## Links:
 * ***Original Data Set:*** <https://www.kaggle.com/c/titanic/data>
 * ***Seaborn Documentation:*** <http://seaborn.pydata.org/examples/>
 * ***Pandas Documentation:*** <https://pandas.pydata.org/docs/user_guide/>
-
-    
+* ***Scikit-learn Documentation:*** <https://scikit-learn.org/stable/user_guide>
+* ***Saving and Loading ML models:*** <https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/>
