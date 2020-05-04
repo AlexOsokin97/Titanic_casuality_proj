@@ -10,11 +10,6 @@ import matplotlib.pyplot as plt
 
 #load our train data and test data
 df_train = pd.read_csv('df_train_new.csv')
-df_test = pd.read_csv('test.csv')
-
-#clean the test data
-df_test.drop('Cabin', axis=1, inplace=True)
-df_test['Embarked'] = df_test['Embarked'].apply(lambda x: 'Queenstown' if x =='Q' else x).apply(lambda x: 'Cherbourg' if x=='C' else x).apply(lambda x: 'Southampton' if x=='S' else x)
 
 #choosing relevant columns
 df_model = df_train[['Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked']]
@@ -29,27 +24,27 @@ y = df_dums['Survived'].values
 #creating train test split
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.23, random_state=42)
 
 #applying feature scalling using standardization
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 
 #Scalling the Age column(1) and the Fare column(4) of our training set
-X_train[:,1:2] = sc.fit_transform(X_train[:,1:2])
-X_train[:,4:5] = sc.fit_transform(X_train[:,4:5])
+X_train[:,[1,4]] = sc.fit_transform(X_train[:,[1,4]])
 
 #Scalling the Age column(1) and the Fare column(4) of our test set
-X_test[:,1:2] = sc.transform(X_test[:,1:2])
-X_test[:,4:5] = sc.transform(X_test[:,4:5])
+X_test[:,[1,4]] = sc.transform(X_test[:,[1,4]])
 
-#Logistic Regression using sklearn
+#using logistic regression and fitting it to x and y training sets
 from sklearn.linear_model import LogisticRegression
-clf = LogisticRegression(random_state=0).fit(X_train, y_train)
-accuarcy = clf.score(X_train, y_train)
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
 
+#Predicting the test set result
+y_predict = classifier.predict(X_test)
 
-
-
-
+#Creating a confusion matrix
+from sklearn.metrics import confusion_matrix
+classifier_cm = confusion_matrix(y_test, y_predict)
 
