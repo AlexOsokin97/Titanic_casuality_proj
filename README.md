@@ -6,7 +6,7 @@
 
 ## Code and Resources Used:
 * ***Python Version:*** 3.8.2
-* ***Packages:*** Pandas, Numpy, Matplotlib, Seaborn, sklearn, statsmodels
+* ***Packages:*** pandas, numpy, matplotlib, seaborn, sklearn, pickle
 * ***IDES Used:*** Anaconda, Spyder, Jupyter-Notebook
 
 ## Youtube:
