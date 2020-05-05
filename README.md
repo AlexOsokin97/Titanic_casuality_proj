@@ -4,7 +4,7 @@
 * **Used over 1000 samples of Titanic passanger's information from Kaggle**
 * **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died, compared their preformance and used the best one to fill the missing "Survived" values**
 
-## Table of Contents:
+## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
 * ***Original_DF's [Directory]:*** Contains the original test and train data sets downloaded from kaggle
 * ***Classification Models [Python File]:*** Contains the trained machine learning classification algorithms 
