@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #importing our test data
-df_test = pd.read_csv('test.csv')
+df_test = pd.read_csv("Original_DF's/test.csv")
 
 #preparing our data
 df_test.set_index('PassengerId', inplace=True)
