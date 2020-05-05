@@ -7,8 +7,7 @@ Created on Sun Apr 19 16:45:34 2020
 
 import pandas as pd
 
-df_train = pd.read_csv("train.csv")
-df_test = pd.read_csv("test.csv")
+df_train = pd.read_csv("Original_DF's/train.csv")
 
 #fill out the missing ages using pclass, sex and avg passenger age
 #change the embarked column info to C = Cherbourg, Q = Queenstown, S = Southampton
