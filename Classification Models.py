@@ -11,14 +11,15 @@ import matplotlib.pyplot as plt
 #load our train data and test data
 df_train = pd.read_csv('df_train_new.csv')
 
-#choosing relevant columns
+#choosing relevant columns and cleaning
 df_model = df_train[['Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked']]
+df_model.drop(df_model.loc[df_model['Embarked']=='Unknown'].index, inplace=True)
 
 #create dummy variables
 df_dums = pd.get_dummies(df_model)
 
 #creating the dependent(y) and independent(X) variables
-X = df_dums.drop('Survived', axis=1).values
+X = df_dums.drop(['Survived'], axis=1).values
 y = df_dums['Survived'].values
 
 #creating train test split

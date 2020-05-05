@@ -38,6 +38,8 @@ X_test[:,[1,4]] = sc.fit_transform(X_test[:,[1,4]])
 import pickle
 loaded_model = pickle.load(open('finalized_SVM_model.sav', 'rb'))
 
+Survived_prediction = loaded_model.predict(X_test)
 
+df_test.insert(0, 'Survived_prediction', Survived_prediction)
 
-
+df_test.to_csv('C:/Users/User/Documents/GitHub/titanic_casualties_proj/df_TESTED.csv')
