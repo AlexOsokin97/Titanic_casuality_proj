@@ -10,7 +10,6 @@ import pandas as pd
 df_train = pd.read_csv("train.csv")
 df_test = pd.read_csv("test.csv")
 
-#GOAL: check if passenger survived based on his pclass info, sex, age
 #fill out the missing ages using pclass, sex and avg passenger age
 #change the embarked column info to C = Cherbourg, Q = Queenstown, S = Southampton
 
@@ -72,12 +71,6 @@ df_pclass2['Age'] = df_pclass2[['Sex','Age']].apply(lambda x: male_2class_mean i
 #filling missing age data of second class df:
 df_pclass3['Age'] = df_pclass3[['Sex','Age']].apply(lambda x: female_3class_mean if x['Sex']=='female' and x['Age']==-1 else x['Age'], axis=1)
 df_pclass3['Age'] = df_pclass3[['Sex','Age']].apply(lambda x: male_3class_mean if x['Sex']=='male' and x['Age']==-1 else x['Age'],axis=1)
-
-#saving the 3 new dataframes for further use:
-df_pclass1.to_csv('C:/Users/Alexander/Documents/GitHub/titanic_casualties_proj/pclass1_data.csv')
-df_pclass2.to_csv('C:/Users/Alexander/Documents/GitHub/titanic_casualties_proj/pclass2_data.csv')
-df_pclass3.to_csv('C:/Users/Alexander/Documents/GitHub/titanic_casualties_proj/pclass3_data.csv')
-
 
 
 
