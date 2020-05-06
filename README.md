@@ -10,7 +10,6 @@
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
 * ***Original_DF's [Directory]:*** Contains the original test and train data sets downloaded from kaggle
 * ***Classification Models [Python File]:*** Contains the trained machine learning classification algorithms 
-* ***Regression Models [Python File]:*** Contains the trained machine learning regression algorithms
 * ***Complete_df [CSV File]:*** The full complete titanic passenger data set
 * ***data_clean [Python File]:*** Contains the cleaning code of the 'train' dataset
 * ***df_TESTED [CSV File]:*** The 'test.csv' dataset after predicting and adding the 'Survived' column
