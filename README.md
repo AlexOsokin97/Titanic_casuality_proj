@@ -23,6 +23,14 @@
 * ***Packages:*** pandas, numpy, matplotlib, seaborn, sklearn, pickle
 * ***IDES Used:*** Anaconda, Spyder, Jupyter-Notebook
 * ***Saving and Loading ML models:*** <https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/>
+* ***Titanic_Proj_Example:*** <https://towardsdatascience.com/predicting-the-survival-of-titanic-passengers-30870ccc7e8>
 
 ## Youtube:
 * ***Youtube:*** Videos and explainations from Ken Jee who is a data scientist. You can look up his channel [Here](https://www.youtube.com/channel/UCiT9RITQ9PW6BhXK0y2jaeg)
+
+## EDA:
+**I looked at the distributions of the data for numerical and categorical data. Made plots that describe the dataset and made it easier to find correlation between data. Here are some examples:
+
+![alt text][plot1]
+
+[plot1]: 
