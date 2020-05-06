@@ -31,6 +31,11 @@
 ## EDA:
 **I looked at the distributions of the data for numerical and categorical data. Made plots that describe the dataset and made it easier to find correlation between data. Here are some examples:**
 
-![alt text][plot1]
+![alt text][plot1] ![alt text][plot2]
+![alt text][plot3] ![alt text][plot4]
+
 
 [plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/corrHeatmap.png "CorrHeatmap"
+[plot2]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/MaleFemaleSurvived.png "MaleFemaleSurvived"
+[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/grid.png "Survivals/Casualties in classes"
+[plot4]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/fig.png "Survivals/Deaths in each gender "
