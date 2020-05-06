@@ -2,7 +2,9 @@
 * **Was the survival of some Titanic's passangers a mere coincidence? Or there were certain conditions that had major**
 **role in deciding the passanger's fate?**
 * **Used over 1000 samples of Titanic passanger's information from Kaggle**
-* **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died, compared their preformance and used the best one to fill the missing "Survived" values**
+* **Cleaned the original datasets using statistical methods, 
+* **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died and  compared their preformance and used the best one to fill the missing "Survived" values**
+* **used standardization to eliminate bias/variance influence on the classification algorithms**
 
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
