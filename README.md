@@ -4,7 +4,7 @@
 * **Used over 1000 samples of Titanic passanger's information from Kaggle**
 * **Cleaned the original datasets and created new ones and applied them in data analysis and model training**
 * **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died and  compared their preformance and used the best one to fill the missing "Survived" values**
-* **used standardization to eliminate bias/variance influence on the classification algorithms**
+* **Used standardization to eliminate bias/variance influence on the classification algorithms**
 
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
@@ -27,6 +27,16 @@
 
 ## Youtube:
 * ***Youtube:*** Videos and explainations from Ken Jee who is a data scientist. You can look up his channel [Here](https://www.youtube.com/channel/UCiT9RITQ9PW6BhXK0y2jaeg)
+
+## Data Cleaning:
+**After downloading the traing and test datasets I analyzed them in-order to get a quick overview and look for missing data and prepare it for model training. After analyzation I made the following changes:**
+* Changed the Embarked location name from the first letter of the location to the full name.
+* Dropped the Cabin column for having too much missing data
+* Filled the missing values in Age column by calculating the age mean while taking the passenger's travel class and gender in consideration
+* Dropped the Name column because it couldn't be used in my model training
+* Made the PassengerId column as the dataset index and thus getting rid of it too
+* Transformed the Sex column into numerical data 1s and 0s for each gender 
+* Created dummy variables for each categorical data in the dataset as preparation for the model training and testing
 
 ## EDA:
 **I looked at the distributions of the data for numerical and categorical data. Made plots that describe the dataset and made it easier to find correlation between data. Here are some examples:**
