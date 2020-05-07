@@ -4,7 +4,7 @@
 * **Used over 1000 samples of Titanic passanger's information from Kaggle**
 * **Cleaned the original datasets and created new ones and applied them in data analysis and model training**
 * **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died and  compared their preformance and used the best one to fill the missing "Survived" values**
-* **Used standardization to eliminate bias/variance influence on the classification algorithms**
+* 
 
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
@@ -49,3 +49,23 @@
 [plot2]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/MaleFemaleSurvived.png "MaleFemaleSurvived"
 [plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/grid.png "Survivals/Casualties in classes"
 [plot4]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/fig.png "Survivals/Deaths in each gender "
+
+## Model Building:
+**I decided to create a model which will be able to predict whether a passanger Survived or Died based on most of the passenger's info: Gender, Age, Travel Class, Had Children/Spouces, Had Parents/Siblings, Fare**
+I transformed all of the categorical data which was not numerical to numerical, created dummy variables for each categorical data which was used and applied standardization in order to reduce the chances of my models being affected by high variance/bias and thus making it less accurate
+**The algorithms I used were the following:**
+* **Logistic Regression** - basic and easy to apply algorithm for classification
+* **Support Vector Machine** - More complex algorithm, because I had many features I thought it might be a good fit. Also applied two different kernels: polynomial and sigmoid.
+* **Random Forest** - More complex algorithm, Again because I had many features I thought it might be a good fit. Also applied different tree amounts: 50 ,100, 200.
+* **K-Nearest Neighbor** - Was intrested to see the preformance of this algorithm
+
+## Model Performance:
+Although all the classification model's accuarcy was almost the same, the Support Vector Machine with the polynomial kernel had the best performance:
+
+* ***Support Vector Machine (polynomial): Accuarcy- 0.815 (81.5%)*** 
+* ***Support Vector Machine (sigmoid): Accuarcy- 0.814 (81.4%)*** 
+* ***K- Nearest Neighbor: Accuarcy- 0.800 (80%)***
+* ***Logistic Regression: Accuarcy- 0.790 (79%)*** 
+* ***Random Forest Classification: Accuarcy- 0.765 (76.5%)*** 
+
+
