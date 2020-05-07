@@ -70,8 +70,8 @@ The Support Vector Machine with the polynomial kernel had the best performance:
 * ***Random Forest Classification: Accuarcy- 0.765 (76.5%)*** 
 
 ## Conclusion:
-**After analyzing the data with graphs, plots and applying machine learning which decided the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males. 
+**After analyzing the data with graphs, plots and applying machine learning which decided the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
 
-**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kind of incidents and applying scientific study to them we can prevent future disasters as this one.
+**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kind of incidents and applying scientific study to them we can prevent future disasters as this one.**
 
 ***-Alexander Osokin, 20/5/2020***
