@@ -1,5 +1,5 @@
 # Titanic Passenger Survival Estimator: Project Overview #
-* **Was the survival of some Titanic's passangers a mere coincidence? Or there were certain conditions that had major role in deciding the passanger's fate?**
+* **Was the survival of some Titanic's passengers a mere coincidence? Or there were certain conditions that had major role in deciding the passanger's fate?**
 * **Used over 1000 samples of Titanic passanger's information from Kaggle**
 * **Cleaned the original datasets and created new ones and applied them in data analysis and model training**
 * **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died and  compared their preformance and used the best one to fill the missing "Survived" values**
@@ -70,8 +70,8 @@ The Support Vector Machine with the polynomial kernel had the best performance:
 * ***Random Forest Classification: Accuarcy- 0.765 (76.5%)*** 
 
 ## Conclusion:
-**After analyzing the data with graphs, plots and applying machine learning which decided the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
+**After analyzing the data with graphs, plots and applying machine learning which predicted the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
 
-**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kind of incidents and applying scientific study to them we can prevent future disasters as this one.**
+**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kinds of incidents and applying scientific study to them we can prevent future disasters as this one.**
 
 ***-Alexander Osokin, 20/5/2020***
