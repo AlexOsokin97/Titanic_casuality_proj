@@ -1,4 +1,4 @@
-# Titanic Survival Estimator: Project Overview #
+# Titanic Passenger Survival Estimator: Project Overview #
 * **Was the survival of some Titanic's passangers a mere coincidence? Or there were certain conditions that had major role in deciding the passanger's fate?**
 * **Used over 1000 samples of Titanic passanger's information from Kaggle**
 * **Cleaned the original datasets and created new ones and applied them in data analysis and model training**
