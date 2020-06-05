@@ -2,7 +2,7 @@
 * **Was the survival of some Titanic's passengers a mere coincidence? Or there were certain conditions that had major role in deciding the passanger's fate?**
 * **Used over 1000 samples of Titanic passanger's information**
 * **Cleaned the original datasets and created new ones and applied them in data analysis and model training**
-* **Built models using Logistic Regression, SVM, RandomForest Classifier and K-NN algorithms to predict if a passanger Survived/Died and  compared their preformance and used the best one to fill the missing "Survived" values**
+* **Built models using  SVM, RandomForest Classifier, XGBoost and GradientBoosting algorithms to predict if a passanger Survived/Died and compared their preformance**
 * **Created complex graphs and plots which described and showed cleary the correlation between the passanger's info and his/hers chance of survival** 
 
 ## File Description:
@@ -11,9 +11,7 @@
 * ***Classification Models [Python File]:*** Contains the trained machine learning classification algorithms 
 * ***Complete_df [CSV File]:*** The full complete titanic passenger data set
 * ***data_clean [Python File]:*** Contains the cleaning code of the 'train' dataset
-* ***df_TESTED [CSV File]:*** The 'test.csv' dataset after predicting and adding the 'Survived' column
 * ***df_training_new [CSV File]:*** New trainig dataset created after cleaning
-* ***finalized_SVM_model [SAV File]:*** The trained classification model
 * ***test_data_classification [Python File]:*** Application of the classification model on the test dataset
 
 ## Code and Resources Used:
@@ -49,13 +47,13 @@
 [plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/grid.png "Survivals/Casualties in classes"
 [plot4]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/fig.png "Survivals/Deaths in each gender "
 
-## Model Building:
-**I decided to create a model which will be able to predict whether a passanger Survived or Died based on most of the passenger's info: Gender, Age, Travel Class, Had Children/Spouces, Had Parents/Siblings, Fare**
+## Model Building & Performance:
+**I wanted to create the best model which will be able to predict whether a passanger Survived or Died based on most of the passenger's info: Gender, Age, Travel Class, Had Children/Spouces, Had Parents/Siblings, Fare. As a result, I decided to use 4 different classification algorithms. I split the data into training and testing set using train_test_split function and applied cross_val_score function which creates multiple training sets and one test set, applies the algorithm to each training set and checks the performance of the algorithm with the accuracy_score function. I ranked the performance of each algorithm in a descending order**
 
-
-## Model Performance:
-
-
+* **Support Vector Machine (rbf): 82.25% Average Accuracy**
+* **Gradient Boosting Classifier: 81.85% Average Accuracy**
+* **Random Forest Classifier (160 estimators): 81.57% Average Accuracy** 
+* **XGBoost Classifier: 80.44% Average Accuracy**
 
 ## Conclusion:
 **After analyzing the data with graphs, plots and applying machine learning which predicted the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
