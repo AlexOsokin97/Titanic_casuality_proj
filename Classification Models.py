@@ -100,9 +100,11 @@ print("Accuracy: {}%".format(accuracy_score(y_test, y_pred_svc)))
 svc_accuracies = cross_val_score(svc, X = X_train, y = y_train, cv=7)
 print("The Avg Accuracy of cross-val-score: {} %".format(svc_accuracies.mean()*100))
 
+###########################################ModelSaving#################################################
 
-
-
+import pickle
+file_name = "SVC_model.sav"
+pickle.dump(svc, open(file_name, 'wb'))
 
 
 
