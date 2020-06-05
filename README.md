@@ -12,7 +12,6 @@
 * ***Complete_df [CSV File]:*** The full complete titanic passenger data set
 * ***data_clean [Python File]:*** Contains the cleaning code of the 'train' dataset
 * ***df_training_new [CSV File]:*** New trainig dataset created after cleaning
-* ***test_data_classification [Python File]:*** Application of the classification model on the test dataset
 
 ## Code and Resources Used:
 * ***Python Version:*** 3.8.2
