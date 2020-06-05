@@ -54,7 +54,7 @@
 
 
 ## Model Performance:
-The Support Vector Machine with the polynomial kernel had the best performance:
+
 
 
 ## Conclusion:
