@@ -10,6 +10,37 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 ***In the end, I applied Machine Learning algorithms to check if the data is sufficient enough for the algorithms to classify whether a passenger survived or did not survive so that in the future if new passenger information is found we could use the model to check if that passenger survived or not.***
 
+## Data Cleaning & Visualization:
+***Getting the necessary datasets is one thing but, making them readable, useful and useable is another thing. This is where the data cleaning and remodeling process comes in.***
+
+***Most of the changes that I had done to the dataset are simple such as: changing column names, column data types and removing columns with too much missing data and unnecessary. The more advanced technique I used was when I filled the missing values of the 'Age' column where I used the mean age of all samples while taking into consideration the passenger's gender and traveling class***
+
+***After the data was cleaned, made readable and useful I did exploratory data analysis to dive deeper into the dataset and find correlations between different features and most importantly which features correlate with the passenger's survival. Here are some examples from my data exploration***
+
+![alt text][plot1] ![alt text][plot2] ![alt text][plot4]
+
+
+[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/corrHeatmap.png "CorrHeatmap"
+[plot2]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/MaleFemaleSurvived.png "MaleFemaleSurvived"
+[plot4]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/fig.png "Survivals/Deaths in each gender "
+
+***In the end, I made few more changes to the dataset such as removing more unnecessary columns and transfroming categorical columns to binary to make the dataset ready for Machine Learning algorithms usage***
+
+## Model Building & Performance:
+**I wanted to create the best model which will be able to predict whether a passanger Survived or Died based on most of the passenger's info: Gender, Age, Travel Class, Had Children/Spouces, Had Parents/Siblings, Fare. As a result, I decided to use 4 different classification algorithms. I split the data into training and testing set using train_test_split function and applied cross_val_score function which creates multiple training sets and one test set, applies the algorithm to each training set and checks the performance of the algorithm with the accuracy_score function. I ranked the performance of each algorithm in a descending order**
+
+* **Support Vector Machine (rbf): 82.25% Average Accuracy**
+* **Gradient Boosting Classifier: 81.85% Average Accuracy**
+* **Random Forest Classifier (160 estimators): 81.57% Average Accuracy** 
+* **XGBoost Classifier: 80.44% Average Accuracy**
+
+## Conclusion:
+**After analyzing the data with graphs, plots and applying machine learning which predicted the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
+
+**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kinds of incidents and applying scientific study to them we can prevent future disasters as this one.**
+
+***-Alexander Osokin***
+
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
 * ***Original_DF's [Directory]:*** Contains the original test and train data sets downloaded from kaggle
@@ -26,40 +57,3 @@ Also, I looked up and used other techniques which were better/worse than the ori
 * ***Saving and Loading ML models:*** <https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/>
 * ***Titanic_Proj_Example:*** <https://towardsdatascience.com/predicting-the-survival-of-titanic-passengers-30870ccc7e8>
 * ***Youtube:*** Videos and explainations from Ken Jee who is a data scientist. You can look up his channel [Here](https://www.youtube.com/channel/UCiT9RITQ9PW6BhXK0y2jaeg)
-
-## Data Cleaning & Visualization:
-
-* Changed the Embarked location name from the first letter of the location to the full name.
-* Dropped the Cabin column for having too much missing data
-* Filled the missing values in Age column by calculating the age mean while taking the passenger's travel class and gender in consideration
-* Dropped the Name column because it couldn't be used in my model training
-* Made the PassengerId column as the dataset index and thus getting rid of it too
-* Transformed the Sex column into numerical data 1s and 0s for each gender 
-* Created dummy variables for each categorical data in the dataset as preparation for the model training and testing
-
-
-**I looked at the distributions of the data for numerical and categorical data. Made plots that describe the dataset and made it easier to find correlation between data. Here are some examples:**
-
-![alt text][plot1] ![alt text][plot2]
-![alt text][plot3] ![alt text][plot4]
-
-
-[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/corrHeatmap.png "CorrHeatmap"
-[plot2]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/MaleFemaleSurvived.png "MaleFemaleSurvived"
-[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/grid.png "Survivals/Casualties in classes"
-[plot4]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/fig.png "Survivals/Deaths in each gender "
-
-## Model Building & Performance:
-**I wanted to create the best model which will be able to predict whether a passanger Survived or Died based on most of the passenger's info: Gender, Age, Travel Class, Had Children/Spouces, Had Parents/Siblings, Fare. As a result, I decided to use 4 different classification algorithms. I split the data into training and testing set using train_test_split function and applied cross_val_score function which creates multiple training sets and one test set, applies the algorithm to each training set and checks the performance of the algorithm with the accuracy_score function. I ranked the performance of each algorithm in a descending order**
-
-* **Support Vector Machine (rbf): 82.25% Average Accuracy**
-* **Gradient Boosting Classifier: 81.85% Average Accuracy**
-* **Random Forest Classifier (160 estimators): 81.57% Average Accuracy** 
-* **XGBoost Classifier: 80.44% Average Accuracy**
-
-## Conclusion:
-**After analyzing the data with graphs, plots and applying machine learning which predicted the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
-
-**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kinds of incidents and applying scientific study to them we can prevent future disasters as this one.**
-
-***-Alexander Osokin***
