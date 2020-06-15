@@ -38,6 +38,7 @@ print("Avg GradientBoosting accuracy: ", np.mean(cross_val_score(gbc, X_train, y
 gbc_params = [{'loss':('deviance','exponential'), 'learning_rate': (0.001, 0.01, 0.1), 'n_estimators': range(300,1500,300),
                'criterion':('friedman_mse', 'mse', 'mae'), 'min_samples_split': range(2,14,4), 'min_samples_leaf': range(2,20,6),
                'max_features': ('auto', 'sqrt', 'log2', None)}]
+
 gbc_gs = GridSearchCV(gbc, gbc_params, scoring='accuracy', cv=3)
 
 gbc_gs.fit(X_train, y_train)
@@ -55,11 +56,14 @@ print("Best model(estimator): ", gbc_gs.best_estimator_)
 from xgboost import XGBClassifier
 
 xgb = XGBClassifier(random_state=42)
-print("Avg XGBoosting accuracy: ", np.mean(cross_val_score(xgb, X_train, y_train, cv=5)), "%")
+print("Avg XGBoosting accuracy: ", np.mean(cross_val_score(xgb, X_train, y_train, cv=10)), "%")
 
-xgb_params = [{             }]
+xgb_params = [{'eta': (0.05,0.1,0.3,0.5), 'gamma':(0, 4, 8, 12), 'max_depth':(3,6,9), 
+               'subsample':(0.5, 1), 'lambda':(0,1,2), 'alpha':(0,1,2), 
+               'tree_method':('auto','exact'), 
+               'grow_policy':('depthwise','lossguide'),'max_leaves':(0,8,16)}]
 
-xgb_gs = GridSearchCV(gbc, gbc_params, scoring='accuracy', cv=3)
+xgb_gs = GridSearchCV(xgb, xgb_params, scoring='accuracy', cv=3)
 
 xgb_gs.fit(X_train, y_train)
 
@@ -72,11 +76,13 @@ from sklearn.ensemble import RandomForestClassifier
 
 rfc = RandomForestClassifier(random_state=42)
 
-print("Avg RandomForest accuracy: ", np.mean(cross_val_score(xgb, X_train, y_train, cv=5)), "%")
+print("Avg RandomForest accuracy: ", np.mean(cross_val_score(xgb, X_train, y_train, cv=10)), "%")
 
-rfc_params = [{             }]
+rfc_params = [{'n_estimators':(100,900,200), 'criterion':('gini', 'entropy'),
+               'max_depth':(3,6,9,None), 'min_samples_split':(2,4,6),
+               'max_features':('auto','sqrt','log2'), 'max_leaf_nodes':(8,16,32)}]
 
-rfc_gs = GridSearchCV(gbc, gbc_params, scoring='accuracy', cv=3)
+rfc_gs = GridSearchCV(rfc, rfc_params, scoring='accuracy', cv=3)
 
 rfc_gs.fit(X_train, y_train)
 
@@ -94,11 +100,12 @@ X_test[:, [1,4]] = sc.transform(X_test[:, [1,4]])
 from sklearn.svm import SVC
 
 svc = SVC(random_state=42)
-print("Avg SVM accuracy", np.mean(cross_val_score(svc, X_train, y_train, cv=5)), "%")
+print("Avg SVM accuracy", np.mean(cross_val_score(svc, X_train, y_train, cv=10)), "%")
 
-svc_params = [{             }]
+svc_params = [{'C':(0.5, 1.0, 2.0), 'kernel':('poly','rbf','sigmoid'), 
+               'degree':range(3,9,3), 'gamma':('scale','auto')}]
 
-svc_gs = GridSearchCV(gbc, gbc_params, scoring='accuracy', cv=3)
+svc_gs = GridSearchCV(svc, svc_params, scoring='accuracy', cv=3)
 
 svc_gs.fit(X_train, y_train)
 
