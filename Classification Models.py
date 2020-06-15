@@ -7,6 +7,7 @@ Created on Sun May  3 10:18:19 2020
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import pickle
 
 #load our train data and test data
 df_train = pd.read_csv('df_train_new.csv')
@@ -29,6 +30,11 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 #creating train test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
 
+#function for model saving
+def save_model(model, name):
+    filename = name
+    pickle.dump(model, open(filename, 'wb'))
+ 
 ######################################GradientBoostingClassifier###########################################
 from sklearn.ensemble import GradientBoostingClassifier
 
@@ -43,16 +49,14 @@ gbc_gs = GridSearchCV(gbc, gbc_params, scoring='accuracy', cv=3)
 
 gbc_gs.fit(X_train, y_train)
 
-gbc_score = gbc_gs.best_score_
-gbc_param = gbc_gs.best_params_
 gbc_estimator = gbc_gs.best_estimator_
 
 print("Best Score: ", gbc_gs.best_score_)
 print("Best parameters: ", gbc_gs.best_params_)
 print("Best model(estimator): ", gbc_gs.best_estimator_)
 
+save_model(gbc_estimator, 'gbc_estimator')
 #########################################XGBClassifier#########################################
-
 from xgboost import XGBClassifier
 
 xgb = XGBClassifier(random_state=42)
@@ -67,11 +71,14 @@ xgb_gs = GridSearchCV(xgb, xgb_params, scoring='accuracy', cv=3)
 
 xgb_gs.fit(X_train, y_train)
 
+xgb_estimator = gbc_gs.best_estimator_
+
 print("Best Score: ", xgb_gs.best_score_)
 print("Best parameters: ", xgb_gs.best_params_)
 print("Best model(estimator): ", xgb_gs.best_estimator_)
-#######################################RandomForestClassifier########################################
 
+save_model(xgb_estimator, 'xgb_estimator')
+#######################################RandomForestClassifier########################################
 from sklearn.ensemble import RandomForestClassifier
 
 rfc = RandomForestClassifier(random_state=42)
@@ -86,9 +93,13 @@ rfc_gs = GridSearchCV(rfc, rfc_params, scoring='accuracy', cv=3)
 
 rfc_gs.fit(X_train, y_train)
 
+rfc_estimator = gbc_gs.best_estimator_
+
 print("Best Score: ", rfc_gs.best_score_)
 print("Best parameters: ", rfc_gs.best_params_)
 print("Best model(estimator): ", rfc_gs.best_estimator_)
+
+save_model(rfc_estimator, 'rfc_estimator')
 ###################################SupportVectorMachine####################################################
 from sklearn.preprocessing import StandardScaler
 
@@ -109,11 +120,14 @@ svc_gs = GridSearchCV(svc, svc_params, scoring='accuracy', cv=3)
 
 svc_gs.fit(X_train, y_train)
 
+svc_estimator = gbc_gs.best_estimator_
+
 print("Best Score: ", svc_gs.best_score_)
 print("Best parameters: ", svc_gs.best_params_)
 print("Best model(estimator): ", svc_gs.best_estimator_)
-###########################################ModelSaving#################################################
 
+save_model(svc_estimator, 'svc_estimator')
+###########################################ModelSaving#################################################
 
 
 
