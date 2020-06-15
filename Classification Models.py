@@ -33,10 +33,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random
 from sklearn.ensemble import GradientBoostingClassifier
 
 gbc = GradientBoostingClassifier(random_state=42)
-print("Avg GradientBoosting accuracy: ", np.mean(cross_val_score(gbc, X_train, y_train, cv=5)), "%")
+print("Avg GradientBoosting accuracy: ", np.mean(cross_val_score(gbc, X_train, y_train, cv=10)), "%")
 
-gbc_params = [{'loss':('deviance','exponential'), 'learning_rate': (0.0001, 0.001, 0.01, 0.1), 'n_estimators': range(100,1500,100),
-               'criterion':('friedman_mse', 'mse', 'mae'), 'min_samples_split': range(2,10,2), 'min_samples_leaf': range(2,12,2),
+gbc_params = [{'loss':('deviance','exponential'), 'learning_rate': (0.001, 0.01, 0.1), 'n_estimators': range(300,1500,300),
+               'criterion':('friedman_mse', 'mse', 'mae'), 'min_samples_split': range(2,14,4), 'min_samples_leaf': range(2,20,6),
                'max_features': ('auto', 'sqrt', 'log2', None)}]
 gbc_gs = GridSearchCV(gbc, gbc_params, scoring='accuracy', cv=3)
 
