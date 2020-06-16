@@ -35,7 +35,7 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 * **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. Because the goal of the algorithm was to classify whether a passenger survived or not survived (1 or 0 which is binary classification) this algorithm could show high performance.
 
-**The next step was applying the following techniques to make the learning process for the algorithms easier, faster and qualitative:***
+**The next step was applying the following techniques to make the learning process for the algorithms easier, faster and qualitative:**
 
 * **train_test_split:** I used this technique in order to split my dataset into 2 fractions. The first largest fraction is the 'training set' which would include 80% of the whole dataset and the second smallest fraction is the 'testing set' which would include 20% from the whole dataset. I used this technique because I wanted to check how succeful my models were by applying them on data they had never seen before.
 
