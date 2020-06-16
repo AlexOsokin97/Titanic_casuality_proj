@@ -11,14 +11,13 @@ Also, I looked up and used other techniques which were better/worse than the ori
 ***In the end, I applied Machine Learning algorithms to check if the data is sufficient enough for the algorithms to classify whether a passenger survived or did not survive so that in the future if new passenger information is found we could use the model to check if that passenger survived or not.***
 
 ## Data Cleaning & Visualization:
-***Getting the necessary datasets is one thing but, making them readable, useful and useable is another thing. This is where the data cleaning and remodeling process comes in.***
+***Getting the necessary datasets is one thing but, making it readable, useful and useable is another thing. This is where the data cleaning and remodeling process came in.***
 
 ***Most of the changes that I had done to the dataset are simple such as: changing column names, column data types and removing columns with too much missing data and unnecessary. The more advanced technique I used was when I filled the missing values of the 'Age' column where I used the mean age of all samples while taking into consideration the passenger's gender and traveling class***
 
 ***After the data was cleaned, made readable and useful I did exploratory data analysis to dive deeper into the dataset and find correlations between different features and most importantly which features correlate with the passenger's survival. Here are some examples from my data exploration***
 
 ![alt text][plot1] ![alt text][plot2] ![alt text][plot4]
-
 
 [plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/corrHeatmap.png "CorrHeatmap"
 [plot2]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/MaleFemaleSurvived.png "MaleFemaleSurvived"
@@ -27,12 +26,22 @@ Also, I looked up and used other techniques which were better/worse than the ori
 ***In the end, I made few more changes to the dataset such as removing more unnecessary columns and transfroming categorical columns to binary to make the dataset ready for Machine Learning algorithms usage***
 
 ## Model Building & Performance:
-**I wanted to create the best model which will be able to predict whether a passanger Survived or Died based on most of the passenger's info: Gender, Age, Travel Class, Had Children/Spouces, Had Parents/Siblings, Fare. As a result, I decided to use 4 different classification algorithms. I split the data into training and testing set using train_test_split function and applied cross_val_score function which creates multiple training sets and one test set, applies the algorithm to each training set and checks the performance of the algorithm with the accuracy_score function. I ranked the performance of each algorithm in a descending order**
+***Lastly, I decided to apply Machine Learning algorithms to the dataset to see if they successfuly managed to generalize the data and make accurate predictions. The following algorithms were used:***
 
-* **Support Vector Machine (rbf): 82.25% Average Accuracy**
-* **Gradient Boosting Classifier: 81.85% Average Accuracy**
-* **Random Forest Classifier (160 estimators): 81.57% Average Accuracy** 
-* **XGBoost Classifier: 80.44% Average Accuracy**
+* **Gradient Boosing Classifier:**
+* **XGBoost Classifier:**
+* **:**
+* **Support Vector Machine:**
+
+***After choosing the algorithms I used the following techniques to make the learning process for the algorithms easier, faster and qualitative:***
+
+* **train_test_split:** I used this technique in order to split my dataset into 2 fractions. The first largest fraction is the 'training set' which would include 80% of the whole dataset and the second smallest fraction is the 'testing set' which would include 20% from the whole dataset. I used this technique because I wanted to check how succeful my models were by applying them on data they had never seen before.
+
+* **cross_val_score:** I used this method because I wanted to check if my model's high/low performance is not accidental. I checked it by splitting my training data to 3 small datasets where 1 of 3 is used as testing data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies scores. This method removed the probabilty that the model's performance was accidental and also gave me a general idea of the quality of my dataset. Each model achieved above 80% accuracy.
+
+* **grid_search_cv:** This method is very powerful for model selection but also takes some time to execute. Because the models I used have many parameters that you can change and apply it wouldn't be smart to apply a naive model with its' default parameters. So, by applying grid search I gave the models to experiment on all different parameters and pick the best model which had the best score.
+
+* **standardization:** I applied standardization in order to scale the data and make the learning process easier and faster. I used this method only when I applied The support vector machine algorithm. I did not use normilization because the distribution of features varied and was not normal.
 
 ## Conclusion:
 **After analyzing the data with graphs, plots and applying machine learning which predicted the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
