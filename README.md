@@ -17,9 +17,8 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 ***After the data was cleaned, made readable and useful I did exploratory data analysis to dive deeper into the dataset and find correlations between different features and most importantly which features correlate with the passenger's survival. Here are some examples from my data exploration***
 
-![alt text][plot1] ![alt text][plot2] ![alt text][plot4]
+![alt text][plot2] ![alt text][plot4]
 
-[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/corrHeatmap.png "CorrHeatmap"
 [plot2]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/MaleFemaleSurvived.png "MaleFemaleSurvived"
 [plot4]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/Data_Analysis/fig.png "Survivals/Deaths in each gender "
 
@@ -28,10 +27,11 @@ Also, I looked up and used other techniques which were better/worse than the ori
 ## Model Building & Performance:
 ***Lastly, I decided to apply Machine Learning algorithms to the dataset to see if they successfuly managed to generalize the data and make accurate predictions. The following algorithms were used:***
 
-* **Gradient Boosing Classifier:**
 * **XGBoost Classifier:**
-* **:**
-* **Support Vector Machine:**
+
+* **Naive Bayes Classifier:** The Gaussian Naive Bays algorithm uses given tree branches to compute possible probabilities. In other words, it allows the quick classification of (in my case) whether the passeneger survived or not survived. In addition, the dataset is relatively small and therefore, the algorithm could show high performance
+
+* **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. Because the goal of the algorithm was to classify whether a passenger survived or not survived (1 or 0 which is binary classification) this algorithm could show high performance.
 
 ***After choosing the algorithms I used the following techniques to make the learning process for the algorithms easier, faster and qualitative:***
 
