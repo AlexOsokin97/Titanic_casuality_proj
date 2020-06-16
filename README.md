@@ -25,7 +25,9 @@ Also, I looked up and used other techniques which were better/worse than the ori
 ***In the end, I made few more changes to the dataset such as removing more unnecessary columns and transfroming categorical columns to binary to make the dataset ready for Machine Learning algorithms usage***
 
 ## Model Building & Performance:
-***Lastly, I decided to apply Machine Learning algorithms to the dataset to see if they successfuly managed to generalize the data and make accurate predictions. The following algorithms were used:***
+***I was intrested to find out if there is a function that could predict if a passenger survived/not survived based on the given data so, I decided to apply Machine Learning classification algorithms to the dataset to see if they successfuly managed to generalize the data and make accurate predictions. The following algorithms were used:***
+
+* **Logistic Regression:** Linear based model used for binary classification. Chose it because there could be only 2 predicted values (survived/not survived also can be written as 1/0).
 
 * **XGBoost Classifier:**
 
@@ -33,7 +35,7 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 * **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. Because the goal of the algorithm was to classify whether a passenger survived or not survived (1 or 0 which is binary classification) this algorithm could show high performance.
 
-***After choosing the algorithms I used the following techniques to make the learning process for the algorithms easier, faster and qualitative:***
+**The next step was applying the following techniques to make the learning process for the algorithms easier, faster and qualitative:***
 
 * **train_test_split:** I used this technique in order to split my dataset into 2 fractions. The first largest fraction is the 'training set' which would include 80% of the whole dataset and the second smallest fraction is the 'testing set' which would include 20% from the whole dataset. I used this technique because I wanted to check how succeful my models were by applying them on data they had never seen before.
 
@@ -43,10 +45,12 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 * **standardization:** I applied standardization in order to scale the data and make the learning process easier and faster. I used this method only when I applied The support vector machine algorithm. I did not use normilization because the distribution of features varied and was not normal.
 
-## Conclusion:
-**After analyzing the data with graphs, plots and applying machine learning which predicted the passenger's fate (Survived/Died) I can cinfidantly say that a passanger's survival was most of the time not coincidential and had many influencers from being female or male, traveling in the first, second or third class or even the fare amount that was paid. Those who traveled in the first and second class had more chances of survial than those who traveled in the third class. Female passengers had higher survival chances than male passangers as most of the victims were males.**
+**Moving onwards, I applied the trained models on new unseed data and evaluated their performance using the accuracy and confusion matrix metrics. Each model performed differently and had different accuracies.**
 
-**In conclusion, Titanic was a great tragedy and had taken many lives. But, I believe by studying these kinds of incidents and applying scientific study to them we can prevent future disasters as this one.**
+**Lastly, I decided to choose (model) as the classification algorithm for this case because (...)**
+
+## Conclusion:
+
 
 ***-Alexander Osokin***
 
