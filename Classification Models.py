@@ -41,7 +41,7 @@ def model_performance(filename):
     plot_confusion_matrix(loaded_model, X_test, y_test)
     return accuracy
 
-######################################GradientBoostingClassifier###########################################
+######################################LogisticRegressionClassifier############################################
 from sklearn.linear_model import LogisticRegression
 
 lrc = LogisticRegression(max_iter=2000)
@@ -58,7 +58,7 @@ lrc_estimator = lrc_gs.best_estimator_
 
 save_model(lrc_estimator, 'lrc_estimator')
 model_performance('lrc_estimator.sav')
-#########################################XGBClassifier#########################################
+#########################################XGBClassifier########################################################
 from xgboost import XGBClassifier
 
 xgb = XGBClassifier()
@@ -80,7 +80,7 @@ print("Best model(estimator): ", xgb_gs.best_estimator_)
 
 save_model(xgb_estimator, 'xgb_estimator')
 model_performance('xgb_estimator.sav')
-#########################################GaussianNaiveBaysClassifier######################################
+#########################################GaussianNaiveBaysClassifier###########################################
 from sklearn.naive_bayes import GaussianNB
 
 nbc = GaussianNB()
@@ -90,7 +90,7 @@ nbc.fit(X_train, y_train)
 
 save_model(nbc, 'nbc')
 model_performance('nbc.sav')
-###################################SupportVectorMachine####################################################
+###################################SupportVectorMachine########################################################
 from sklearn.preprocessing import StandardScaler
 
 sc = StandardScaler()
