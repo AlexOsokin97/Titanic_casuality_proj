@@ -58,28 +58,24 @@ lrc_estimator = lrc_gs.best_estimator_
 
 save_model(lrc_estimator, 'lrc_estimator')
 model_performance('lrc_estimator.sav')
-#########################################XGBClassifier########################################################
-from xgboost import XGBClassifier
+#########################################KNN########################################################
+from sklearn.neighbors import KNeighborsClassifier
 
-xgb = XGBClassifier()
-print("Avg XGBoosting accuracy: ", np.mean(cross_val_score(xgb, X_train, y_train, cv=3)), "%")
+knc = KNeighborsClassifier()
+print("Avg KNeighborsClassifier accuracy: ", np.mean(cross_val_score(knc, X_train, y_train, cv=3)), "%")
 
-xgb_params = [{'eta': (0.05,0.1,0.3,0.5), 'gamma':(0, 4, 8, 12), 'max_depth':(3,6,9),'subsample':(0.5, 1), 
-               'lambda':(0,1,2), 'alpha':(0,1,2),'tree_method':('auto','exact'), 'learning_rate':(0.001,0.01,0.1),
-               'grow_policy':('depthwise','lossguide'),'max_leaves':(0,8,16), 'n_estimators':range(100,1000,100)}]
+knc_params = [{'n_neighbors': range(10,50,10), 'weights':('uniform', 'distance'), 
+               'algorithm':('ball_tree', 'kd_tree', 'brute', 'auto'), 'leaf_size':range(30,90,20),
+               'p':(1,2)}]
 
-xgb_gs = GridSearchCV(xgb, xgb_params, scoring='accuracy', cv=3)
+knc_gs = GridSearchCV(knc, knc_params, scoring='accuracy', cv=3)
 
-xgb_gs.fit(X_train, y_train)
+knc_gs.fit(X_train, y_train)
 
-xgb_estimator = xgb_gs.best_estimator_
+knc_estimator = knc_gs.best_estimator_
 
-print("Best Score: ", xgb_gs.best_score_)
-print("Best parameters: ", xgb_gs.best_params_)
-print("Best model(estimator): ", xgb_gs.best_estimator_)
-
-save_model(xgb_estimator, 'xgb_estimator')
-model_performance('xgb_estimator.sav')
+save_model(knc_estimator, 'knc_estimator')
+model_performance('knc_estimator.sav')
 #########################################GaussianNaiveBaysClassifier###########################################
 from sklearn.naive_bayes import GaussianNB
 
