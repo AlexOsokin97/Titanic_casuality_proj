@@ -49,21 +49,25 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 #### Logistic Regression:
 ![alt text][plot1]
-[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
+
 
 #### KNeighbors Classifier:
 ![alt text][plot3]
-[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/K-NearestNeighbors_cm.png "KNCCM"
+
 
 #### Naive Bayes Classifier:
 ![alt text][plot5]
-[plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Gaussian_Naive_Bayes_cm.png "NBCCM"
 
 #### Support Vector Machine:
 ![alt text][plot6]
+
+
+
+
+[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
+[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/K-NearestNeighbors_cm.png "KNCCM"
+[plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Gaussian_Naive_Bayes_cm.png "NBCCM"
 [plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Support_Vector_Machine.png "SVMCM"
-
-
 **Lastly, I decided to choose (model) as the classification algorithm for this case because (...)**
 
 ## Conclusion:
