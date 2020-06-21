@@ -50,18 +50,26 @@ Also, I looked up and used other techniques which were better/worse than the ori
 #### Logistic Regression:
 ![alt text][plot1]
 
+* ***Accuracy: 79%*** 
+* ***Application:*** I applied a naive Logistic Regression model on the training data by using cross validation with 3 splits and got the avg. accuracy of 80% which shows that the model's performance is not accidently good and there are patterns in the dataset on which the model was able to classify the passengers. Then, I applied grid search which plots different parameters into the logistic regression algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best logistic regression model on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above. 
 
 #### KNeighbors Classifier:
 ![alt text][plot3]
 
+* ***Accuracy: 77%*** 
+* ***Application:*** I applied a naive KNeighbors Classifier model on the training data by using cross validation with 3 splits and got the avg. accuracy of 81% which shows that the model's performance is not accidental and there are patterns in the dataset on which the model was able to classify the passengers. Then, I applied grid search which plots different parameters into the KNeighbors Classifier algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best KNeighbors Classifier model on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
 
 #### Naive Bayes Classifier:
 ![alt text][plot5]
 
+* ***Accuracy: 77%*** 
+* ***Application:*** I applied Naive Bayes Classifier model on the training data by using cross validation with 3 splits and got the avg. accuracy of 77% which is not as good as Logistic and KNeighbors models. Becuase this classifier had no parameters to work with I did not apply grid search on this model. Lastly, I applied the model as it was on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
+
 #### Support Vector Machine:
 ![alt text][plot6]
 
-
+* ***Accuracy: 82%*** 
+* ***Application:*** Before model application I scaled the data using scikit-learn StandardScaler package which scales the data between -3 and 3. I decided to scale the data because support vector machine algorithm is highly sensitive to data with high range, magnitudes and units because it is using Eucledian distance between two data points in its computations. In addition, using support vector machine algorithm on unscaled data may lead to terrible results and high complexity calculations. After scaling the data I applied a naive support vector machine algorithm on the training data using cross validation with 3 splits and got the avg. accuracy of 81%. Then, I used grid search which plots different parameters into the support vector machine algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best support vector machine algorithm on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
 
 
 [plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
@@ -78,6 +86,7 @@ Also, I looked up and used other techniques which were better/worse than the ori
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
 * ***Original_DF's [Directory]:*** Contains the original test and train data sets downloaded from kaggle
+* ***models_&_cms [Directory]:*** Contains the saved machine learning models which were used for testing and performance images
 * ***Classification Models [Python File]:*** Contains the trained machine learning classification algorithms 
 * ***Complete_df [CSV File]:*** The full complete titanic passenger data set
 * ***data_clean [Python File]:*** Contains the cleaning code of the 'train' dataset
