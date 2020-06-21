@@ -76,7 +76,7 @@ Also, I looked up and used other techniques which were better/worse than the ori
 [plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Gaussian_Naive_Bayes_cm.png "NBCCM"
 [plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Support_Vector_Machine.png "SVMCM"
 
-## Conclusion:
+### Conclusion:
 ***All 4 models had pretty good performance but the best one was Support Vector Machine. The reason for its good performance was: firstly, this algorithm can work with infinite dimensions as a result high dimensional data does not affect the algorithm. Secondly, the data was scaled via standardization and thus it removed the possibility of high variance of range, magnitude and unit in the data which could badly affect the algorithm's performance. Thirdly, the support vector machine algorithm can achieve high performance on small datasets. In conclusion, I chose the Support Vector Machine as the best model for this type of problem although, I can say with high confidence that if the dataset was bigger other algorithms might had better results.***
 
 ## File Description:
