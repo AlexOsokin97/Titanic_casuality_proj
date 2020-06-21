@@ -29,11 +29,11 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 * **Logistic Regression:** Linear based model used for binary classification. Chose it because there could be only 2 predicted values (survived/not survived also can be written as 1/0).
 
-* **XGBoost Classifier:**
+* **KNeighborsClassifier:** I chose this algorithm because after the exploritory data analysis phase, I saw that most of the survivors had specific features which differ from the non survivors features. As a result, I assumed that whenever a new data point is plugged in, it would be closer to the correct neighboring points and would be classified correctly
 
 * **Naive Bayes Classifier:** The Gaussian Naive Bays algorithm uses given tree branches to compute possible probabilities. In other words, it allows the quick classification of (in my case) whether the passeneger survived or not survived. In addition, the dataset is relatively small and therefore, the algorithm could show high performance
 
-* **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. Because the goal of the algorithm was to classify whether a passenger survived or not survived (1 or 0 which is binary classification) this algorithm could show high performance.
+* **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. Because the goal of the algorithm was to classify whether a passenger survived or not survived (1 or 0 which is binary classification) this algorithm could show high performance In addition, it is able to work with infinite dimensions.
 
 **The next step was applying the following techniques to make the learning process for the algorithms easier, faster and qualitative:**
 
@@ -45,8 +45,29 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 * **standardization:** I applied standardization in order to scale the data and make the learning process easier and faster. I used this method only when I applied The support vector machine algorithm. I did not use normilization because the distribution of features varied and was not normal.
 
-**Moving onwards, I applied the trained models on new unseed data and evaluated their performance using the accuracy and confusion matrix metrics. Each model performed differently and had different accuracies.**
+**Moving onwards, I applied the trained models on new unseen data and evaluated their performance using the accuracy and confusion matrix metrics. Each model performed differently and had different accuracies. **
 
+#### Logistic Regression:
+![alt text][plot1]
+
+
+#### KNeighbors Classifier:
+![alt text][plot3]
+
+
+#### Naive Bayes Classifier:
+![alt text][plot5]
+
+#### Support Vector Machine:
+![alt text][plot6]
+
+
+
+
+[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
+[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/K-NearestNeighbors_cm.png "KNCCM"
+[plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Gaussian_Naive_Bayes_cm.png "NBCCM"
+[plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Support_Vector_Machine.png "SVMCM"
 **Lastly, I decided to choose (model) as the classification algorithm for this case because (...)**
 
 ## Conclusion:
