@@ -47,41 +47,37 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 **Moving onwards, I applied the trained models on new unseen data and evaluated their performance using the accuracy and confusion matrix metrics. Each model performed differently and had different accuracies.**
 
-#### Logistic Regression:
+### Logistic Regression:
 ![alt text][plot1]
 
 * ***Accuracy: 79%*** 
 * ***Application:*** I applied a naive Logistic Regression model on the training data by using cross validation with 3 splits and got the avg. accuracy of 80% which shows that the model's performance is not accidently good and there are patterns in the dataset on which the model was able to classify the passengers. Then, I applied grid search which plots different parameters into the logistic regression algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best logistic regression model on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above. 
 
-#### KNeighbors Classifier:
+### KNeighbors Classifier:
 ![alt text][plot3]
 
 * ***Accuracy: 77%*** 
 * ***Application:*** I applied a naive KNeighbors Classifier model on the training data by using cross validation with 3 splits and got the avg. accuracy of 81% which shows that the model's performance is not accidental and there are patterns in the dataset on which the model was able to classify the passengers. Then, I applied grid search which plots different parameters into the KNeighbors Classifier algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best KNeighbors Classifier model on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
 
-#### Naive Bayes Classifier:
+### Naive Bayes Classifier:
 ![alt text][plot5]
 
 * ***Accuracy: 77%*** 
 * ***Application:*** I applied Naive Bayes Classifier model on the training data by using cross validation with 3 splits and got the avg. accuracy of 77% which is not as good as Logistic and KNeighbors models. Becuase this classifier had no parameters to work with I did not apply grid search on this model. Lastly, I applied the model as it was on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
 
-#### Support Vector Machine:
+### Support Vector Machine:
 ![alt text][plot6]
 
 * ***Accuracy: 82%*** 
 * ***Application:*** Before model application I scaled the data using scikit-learn StandardScaler package which scales the data between -3 and 3. I decided to scale the data because support vector machine algorithm is highly sensitive to data with high range, magnitudes and units because it is using Eucledian distance between two data points in its computations. In addition, using support vector machine algorithm on unscaled data may lead to terrible results and high complexity calculations. After scaling the data I applied a naive support vector machine algorithm on the training data using cross validation with 3 splits and got the avg. accuracy of 81%. Then, I used grid search which plots different parameters into the support vector machine algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best support vector machine algorithm on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
 
-
 [plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
 [plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/K-NearestNeighbors_cm.png "KNCCM"
 [plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Gaussian_Naive_Bayes_cm.png "NBCCM"
 [plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Support_Vector_Machine.png "SVMCM"
-**Lastly, I decided to choose (model) as the classification algorithm for this case because (...)**
 
 ## Conclusion:
-
-
-***-Alexander Osokin***
+***All 4 models had pretty good performance but the best one was Support Vector Machine. The reason for its good performance was: firstly, this algorithm can work with infinite dimensions as a result high dimensional data does not affect the algorithm. Secondly, the data was scaled via standardization and thus it removed the possibility of high variance of range, magnitude and unit in the data which could badly affect the algorithm's performance. Thirdly, the support vector machine algorithm can achieve high performance on small datasets. In conclusion, I chose the Support Vector Machine as the best model for this type of problem although, I can say with high confidence that if the dataset was bigger other algorithms might had better results.
 
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
