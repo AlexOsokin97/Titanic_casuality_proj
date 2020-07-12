@@ -7,14 +7,14 @@ Created on Sun May  3 10:18:19 2020
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import pickle
+import time
 
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-from sklearn.metrics import plot_confusion_matrix
-from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import plot_confusion_matrix, accuracy_score
+from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
 
 #load our train data and test data
@@ -34,94 +34,156 @@ y = df_dums['Survived'].values
 #creating train test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
 
-#function for model saving
-def save_model(model, name):
-    filename = name+".sav"
-    pickle.dump(model, open(filename, 'wb'))
+#Functions:
+def cross_score(estimator, training_features, training_label, scoring, cv):
+    """
+    this function does cross validation and returns accuracy and performance time
+
+    Parameters
+    ----------
+    estimator : (sklearn.modeltype)
+        sklearn/other api model.
+    training_features : (numpy array)
+        DESCRIPTION.
+    training_label : (numpy array)
+        DESCRIPTION.
+    scoring : (string)
+        sklearn api scoring metric for classification.
+    cv : (integer)
+        K amount of folds.
+
+    Returns
+    -------
+    accuracy : (float)
+
+    train_time : (float)
     
-#function for calculating model performance (Scaled Data)
-def model_performance(model, filename):
-    if model == 'Support Vector Machine':
-        loaded_model = pickle.load(open(filename, 'rb'))
-        accuracy = loaded_model.score(scaled_X_test, y_test)
-        plot_confusion_matrix(loaded_model, scaled_X_test, y_test)
-        return accuracy
-    else:
-        loaded_model = pickle.load(open(filename, 'rb'))
-        accuracy = loaded_model.score(X_test, y_test)
-        plot_confusion_matrix(loaded_model, X_test, y_test)
-        return accuracy
+    """
+    training_start = time.perf_counter()
+    accuracy = np.mean(cross_val_score(estimator, X=training_features, y=training_label, scoring=scoring, cv=cv))
+    training_end = time.perf_counter()
+    train_time = training_end-training_start
+    return accuracy, train_time
 
-#function for feature scaling (Standardization)
-def data_scaler(train_features, test_features, train_cols = [], test_cols = []):
-    sc = StandardScaler()
-    train_features[: , train_cols] = sc.fit_transform(train_features[: , train_cols])
-    test_features[: , test_cols] = sc.transform(test_features[: , test_cols])
-    return train_features, test_features
+def best_hyper_params(estimator,training_features, training_label, params, scoring):
+    """
+    this function does parameter tuning using grid search
+
+    Parameters
+    ----------
+    estimator : (sklearn.modeltype)
+        sklearn/other api model.
+    training_features : (numpy array)
+        X_train.
+    training_label : (numpy array)
+        y_train.
+    params : (list)
+        a dictionary with model's hyper parameters.
+    scoring : (string)
+        sklearn api scoring metric for classification.
+
+    Returns
+    -------
+    best_find : (object)
+        returns a model with the best hyper parameters.
+    best_score : (float)
+        returns the score of the best model.
+    search_time : (float)
+        searching time.
+
+    """
+    search = GridSearchCV(estimator, param_grid=params, scoring=scoring, cv=3, n_jobs=-1)
+    search_start = time.perf_counter()
+    search.fit(training_features, training_label)
+    search_end = time.perf_counter()
+    best_find = search.best_estimator_
+    best_score = search.best_score_
+    search_time = search_end - search_start
+    return best_find, best_score, search_time
+
+def model_performance(estimator, test_features, test_label):
+    """
+    this function evaluates the performance of the model on the testing set
+
+    Parameters
+    ----------
+    estimator : (object)
+        an already tuned model and fitted to the training data (use the estimator returned by best_hyper_params function).
+    test_features : (numpy array)
+        X_test.
+    test_label : (numpy array)
+        y_test.
+
+    Returns
+    -------
+    conf_matrix : (img)
+        returns an image of a confusion matrix.
+    accuracy : (float)
+        model's accuracy.
+    precision : (float)
+        model's precision accuracy.
+
+    """
+    predicts = estimator.predict(test_features)
+    conf_matrix = plot_confusion_matrix(estimator, X=test_features, y_true=test_label)
+    accuracy = accuracy_score(y_true=test_label, y_pred=predicts)
+    return conf_matrix, accuracy
     
-######################################LogisticRegressionClassifier############################################
+######################################XGBoost Classifier############################################
 
-lrc = LogisticRegression(max_iter=2000)
-print("Avg LogisticRegression accuracy: ", np.mean(cross_val_score(lrc, X_train, y_train, cv=3)), "%")
+xg = XGBClassifier(random_state=1)
 
-lrc_params = [{'C':(1.0, 2.0, 3.0), 'fit_intercept':(True, False),'solver':('newton-cg', 'lbfgs', 'sag'),
-               'multi_class':('auto', 'ovr', 'multinomial'), 'max_iter':range(6000,8000,500)}]
+xg_accuracy, xg_train_time = cross_score(xg, X_train, y_train, 'accuracy', 10)
 
-lrc_gs = GridSearchCV(lrc, lrc_params, scoring='accuracy', cv=3)
+xg_params = [{'max_depth':(3,6), 'learning_rate':(0.01, 0.03, 0.1, 0.3), 'n_estimators':range(50,250,100), 'reg_alpha':(0,0.3,0.6,0.8)}]
 
-lrc_gs.fit(X_train, y_train)
+xg_best_esti, xg_best_score, xg_search_time = best_hyper_params(xg, X_train, y_train, xg_params, 'accuracy')
 
-lrc_estimator = lrc_gs.best_estimator_
-
-save_model(lrc_estimator, 'lrc_estimator')
-model_performance('LogisticRegression', 'lrc_estimator.sav')
+xg_cm, xg_pred_accuracy = model_performance(xg_best_esti, X_test, y_test) 
 
 #########################################KNN########################################################
 
 knc = KNeighborsClassifier()
-print("Avg KNeighborsClassifier accuracy: ", np.mean(cross_val_score(knc, X_train, y_train, cv=3)), "%")
 
-knc_params = [{'n_neighbors': range(10,50,10), 'weights':('uniform', 'distance'), 
-               'algorithm':('ball_tree', 'kd_tree', 'brute', 'auto'), 'leaf_size':range(30,90,20),
-               'p':(1,2)}]
+knc_accuracy, knc_train_time = cross_score(knc, X_train, y_train, 'accuracy', 10)
 
-knc_gs = GridSearchCV(knc, knc_params, scoring='accuracy', cv=3)
+knc_params = [{'n_neighbors': (2,4,22,24,42,44), 'weights':('uniform', 'distance'),'algorithm':('ball_tree', 'kd_tree', 'brute'), 
+               'leaf_size':range(30,90,30),'p':(1,2)}]
 
-knc_gs.fit(X_train, y_train)
+knc_best_esti, knc_best_score, knc_search_time = best_hyper_params(knc, X_train, y_train, knc_params, 'accuracy')
 
-knc_estimator = knc_gs.best_estimator_
+knc_cm, knc_pred_accuracy = model_performance(knc_best_esti, X_test, y_test) 
 
-save_model(knc_estimator, 'knc_estimator')
-model_performance('K-NearestNeighbors','knc_estimator.sav')
+#########################################RandomForest Classifier###########################################
 
-#########################################GaussianNaiveBaysClassifier###########################################
+rfc = RandomForestClassifier(random_state=2)
 
-nbc = GaussianNB()
-print("Avg Gaussian Naive Bayes accuracy: ", np.mean(cross_val_score(nbc, X_train, y_train, cv=3)), "%")
+rfc_accuracy, rfc_train_time = cross_score(rfc, X_train, y_train, 'accuracy', 10)
 
-nbc.fit(X_train, y_train)
+rfc_params = [{'n_estimators':range(100,400,100), 'criterion':('gini', 'entropy'), 'max_depth': (3,6,9), 'min_samples_split':(2,8,16), 
+               'max_features':('sqrt', 'log2', 'None')}]
 
-save_model(nbc, 'nbc')
-model_performance('Gaussian Naive Bayes','nbc.sav')
+rfc_best_esti, rfc_best_score, rfc_search_time = best_hyper_params(rfc, X_train, y_train, rfc_params, 'accuracy')
+
+rfc_cm, rfc_pred_accuracy = model_performance(rfc_best_esti, X_test, y_test) 
 
 ###################################SupportVectorMachine########################################################
 
-scaled_X_train, scaled_X_test = data_scaler(X_train, X_test, [1,4], [1,4])
+svc = SVC(random_state=3)
 
-svc = SVC()
-print("Avg SVM accuracy", np.mean(cross_val_score(svc, scaled_X_train, y_train, cv=3)), "%")
+scaler = MinMaxScaler()
+X_train_sclaed = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-svc_params = [{'C':(0.5, 1.0, 2.0), 'kernel':('poly','rbf','sigmoid'), 
-               'degree':range(3,9,3), 'gamma':('scale','auto')}]
+svc_accuracy, svc_train_time = cross_score(svc, X_train_sclaed, y_train, 'accuracy', 10)
 
-svc_gs = GridSearchCV(svc, svc_params, scoring='accuracy', cv=3)
+svc_params = [{'C':(1.0, 2.0, 11.0, 12.0, 21.0, 22.0), 'kernel':('rbf','sigmoid'), 'gamma':('scale','auto')}]
 
-svc_gs.fit(scaled_X_train, y_train)
+svc_best_esti, svc_best_score, svc_search_time = best_hyper_params(svc, X_train_sclaed, y_train, svc_params, 'accuracy')
 
-svc_estimator = svc_gs.best_estimator_
+svc_cm, svc_pred_accuracy = model_performance(svc_best_esti, X_test_scaled, y_test) 
 
-save_model(svc_estimator, 'svc_estimator')
-model_performance('Support Vector Machine','svc_estimator.sav')
+
 
 
     
