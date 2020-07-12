@@ -24,26 +24,26 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 ***In the end, I made few more changes to the dataset such as removing more unnecessary columns and transfroming categorical columns to binary to make the dataset ready for Machine Learning algorithms usage***
 
+* **Important note: I have already managed to classify between the survived and not survived passengers using graphs and plots in the data analysis phase**  
+
 ## Model Building & Performance:
 ***I was intrested to find out if there is a function that could predict if a passenger survived/not survived based on the given data so, I decided to apply Machine Learning classification algorithms to the dataset to see if they successfuly managed to generalize the data and make accurate predictions. The following algorithms were used:***
 
-* **Logistic Regression:** Linear based model used for binary classification. Chose it because there could be only 2 predicted values (survived/not survived also can be written as 1/0).
+* **Logistic Regression:** 
 
-* **KNeighborsClassifier:** I chose this algorithm because after the exploritory data analysis phase, I saw that most of the survivors had specific features which differ from the non survivors features. As a result, I assumed that whenever a new data point is plugged in, it would be closer to the correct neighboring points and would be classified correctly
+* **KNeighborsClassifier:** 
 
-* **Naive Bayes Classifier:** The Gaussian Naive Bays algorithm uses given tree branches to compute possible probabilities. In other words, it allows the quick classification of (in my case) whether the passeneger survived or not survived. In addition, the dataset is relatively small and therefore, the algorithm could show high performance
+* **Naive Bayes Classifier:** The Gaussian Naive Bays algorithm uses given tree branches to compute possible probabilities. I chose this algorithm because the dataset is relatively small and therefore, it could show high performance
 
-* **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. Because the goal of the algorithm was to classify whether a passenger survived or not survived (1 or 0 which is binary classification) this algorithm could show high performance In addition, it is able to work with infinite dimensions.
+* **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. I chose this algorithm because it may give high performance due to its ability to work with infinite dimensions
 
 **The next step was applying the following techniques to make the learning process for the algorithms easier, faster and qualitative:**
 
 * **train_test_split:** I used this technique in order to split my dataset into 2 fractions. The first largest fraction is the 'training set' which would include 80% of the whole dataset and the second smallest fraction is the 'testing set' which would include 20% from the whole dataset. I used this technique because I wanted to check how succeful my models were by applying them on data they had never seen before.
 
-* **cross_val_score:** I used this method because I wanted to check if my model's high/low performance is not accidental. I checked it by splitting my training data to 3 small datasets where 1 of 3 is used as testing data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies scores. This method removed the probabilty that the model's performance was accidental and also gave me a general idea of the quality of my dataset. Each model achieved above 80% accuracy.
+* **cross_val_score:** I used this method because I wanted to check if my model's high/low performance is not accidental. I checked it by splitting my training data to 3 small datasets where 1 of 3 is used as validation data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies. This method lowered the probabilty that the model's performance was accidental and also gave me a general idea of the quality of my dataset. Each model achieved above 80% accuracy.
 
-* **grid_search_cv:** This method is very powerful for model selection but also takes some time to execute. Because the models I used have many parameters that you can change and apply it wouldn't be smart to apply a naive model with its' default parameters. So, by applying grid search I gave the models to experiment on all different parameters and pick the best model which had the best score.
-
-* **standardization:** I applied standardization in order to scale the data and make the learning process easier and faster. I used this method only when I applied The support vector machine algorithm. I did not use normilization because the distribution of features varied and was not normal.
+* **grid_search_cv:** This method is very powerful for model selection but also takes some time to execute. Because some of the models that I used have many hyper-parameters that you can tune. With this method I was able to get better classification results
 
 **Moving onwards, I applied the trained models on new unseen data and evaluated their performance using the accuracy and confusion matrix metrics. Each model performed differently and had different accuracies.**
 
@@ -51,25 +51,25 @@ Also, I looked up and used other techniques which were better/worse than the ori
 ![alt text][plot1]
 
 * ***Accuracy: 79%*** 
-* ***Application:*** I applied a naive Logistic Regression model on the training data by using cross validation with 3 splits and got the avg. accuracy of 80% which shows that the model's performance is not accidently good and there are patterns in the dataset on which the model was able to classify the passengers. Then, I applied grid search which plots different parameters into the logistic regression algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best logistic regression model on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above. 
+* ***Precision:*** 
 
 ### KNeighbors Classifier:
 ![alt text][plot3]
 
 * ***Accuracy: 77%*** 
-* ***Application:*** I applied a naive KNeighbors Classifier model on the training data by using cross validation with 3 splits and got the avg. accuracy of 81% which shows that the model's performance is not accidental and there are patterns in the dataset on which the model was able to classify the passengers. Then, I applied grid search which plots different parameters into the KNeighbors Classifier algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best KNeighbors Classifier model on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
+* ***Precision:***
 
 ### Naive Bayes Classifier:
 ![alt text][plot5]
 
 * ***Accuracy: 77%*** 
-* ***Application:*** I applied Naive Bayes Classifier model on the training data by using cross validation with 3 splits and got the avg. accuracy of 77% which is not as good as Logistic and KNeighbors models. Becuase this classifier had no parameters to work with I did not apply grid search on this model. Lastly, I applied the model as it was on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
+* ***Precision:*** 
 
 ### Support Vector Machine:
 ![alt text][plot6]
 
-* ***Accuracy: 82%*** 
-* ***Application:*** Before model application I scaled the data using scikit-learn StandardScaler package which scales the data between -3 and 3. I decided to scale the data because support vector machine algorithm is highly sensitive to data with high range, magnitudes and units because it is using Eucledian distance between two data points in its computations. In addition, using support vector machine algorithm on unscaled data may lead to terrible results and high complexity calculations. After scaling the data I applied a naive support vector machine algorithm on the training data using cross validation with 3 splits and got the avg. accuracy of 81%. Then, I used grid search which plots different parameters into the support vector machine algorithm and picks the model with the parameters that had the best performance. Lastly, I applied the best support vector machine algorithm on the testing set and evaluated its performance with a confusion matrix and accuracy metrics which are shown above.
+* ***Accuracy: 82%***
+* ***Precision:***
 
 [plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
 [plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/K-NearestNeighbors_cm.png "KNCCM"
