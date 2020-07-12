@@ -79,7 +79,7 @@ Also, I looked up and used other techniques which were better/worse than the ori
 [plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/cms/svc_cm.png "svmcm"
 
 ### Conclusion:
-*** ***
+***I used 4 different algorithms and each of them had unique advantage which could show high performance. After training and testing 3 of the algorithms had very good performance. The best performance was shown by the Support Vector Machine algorithm achieving 82%. The reason for the algortihm's good performance I assumed was becasue I scaled the data thus, lowered big numerical differences in the dataset and lowered outlier influence.***
 
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
