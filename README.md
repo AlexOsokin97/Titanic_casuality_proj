@@ -24,16 +24,20 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 ***In the end, I made few more changes to the dataset such as removing more unnecessary columns and transfroming categorical columns to binary to make the dataset ready for Machine Learning algorithms usage***
 
-* **Important note: I have already managed to classify between the survived and not survived passengers using graphs and plots in the data analysis phase**  
+* **According to the data set, if you are a woman you had 80% survival chance and if you are a man you had 18% survival rate** 
+
+* **According to the first plot we can clearly classify between the survivors and non survivors**
+
+* **If I classify everone as non survivor I would get 60% accuracy and if I classify everyone as a survivor I'll get 40% accuracy.**
 
 ## Model Building & Performance:
-***I was intrested to find out if there is a function that could predict if a passenger survived/not survived based on the given data so, I decided to apply Machine Learning classification algorithms to the dataset to see if they successfuly managed to generalize the data and make accurate predictions. The following algorithms were used:***
+***I decided to use Machine Learning to see if a model was able to achieve a high classification accuracy. The following algorithms were used:***
 
-* **Logistic Regression:** 
+* **XGBoost Classifier: XGBoost is a decision-tree-based ensemble Machine Learning algorithm that uses a gradient boosting framework. I chose this algorithm because it is fast, outliers have less impact on it and uses less computation resources** [https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d]
 
-* **KNeighborsClassifier:** 
+* **K-NN Classifier: An algorithm which stores all given cases and classifies them to K amount of neighbors based on a similarity measure. I chose this algorithm because it is very simple to understand and implement** [https://www.saedsayad.com/k_nearest_neighbors.htm#:~:text=K%20nearest%20neighbors%20is%20a,as%20a%20non%2Dparametric%20technique.]
 
-* **Naive Bayes Classifier:** The Gaussian Naive Bays algorithm uses given tree branches to compute possible probabilities. I chose this algorithm because the dataset is relatively small and therefore, it could show high performance
+* **RandomForest Classifier: RandomForests or random decision forests are an ensemble learning method that operate by constructing a multitude of decision trees at training time. I chose this algorithm becasue it is powerful and accurate on many problems** 
 
 * **Support Vector Machine:** The algorithm uses the help of hyperplanes to classify groups of data. I chose this algorithm because it may give high performance due to its ability to work with infinite dimensions
 
@@ -43,46 +47,44 @@ Also, I looked up and used other techniques which were better/worse than the ori
 
 * **cross_val_score:** I used this method because I wanted to check if my model's high/low performance is not accidental. I checked it by splitting my training data to 3 small datasets where 1 of 3 is used as validation data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies. This method lowered the probabilty that the model's performance was accidental and also gave me a general idea of the quality of my dataset. Each model achieved above 80% accuracy.
 
-* **grid_search_cv:** This method is very powerful for model selection but also takes some time to execute. Because some of the models that I used have many hyper-parameters that you can tune. With this method I was able to get better classification results
+* **grid_search_cv:** I used this method for model hyper parameter tuning. Because some of the models that I used have many hyper-parameters that you can tune. With this method I was able to get better classification results
+
+* **MinMaxScaler: parameter scaling function which scales the parameters between 0,1. I used this function only when I used the SVC algorithm because it is advised to scale the data between 0,1 inorder to achieve best performance**
 
 **Moving onwards, I applied the trained models on new unseen data and evaluated their performance using the accuracy and confusion matrix metrics. Each model performed differently and had different accuracies.**
 
-### Logistic Regression:
+### XGBoost Classifier:
 ![alt text][plot1]
 
-* ***Accuracy: 79%*** 
-* ***Precision:*** 
+* ***Accuracy on testing_set: 80%*** 
 
-### KNeighbors Classifier:
+### K-NN Classifier:
 ![alt text][plot3]
 
-* ***Accuracy: 77%*** 
-* ***Precision:***
+* ***Accuracy on testing_set: 72%*** 
 
-### Naive Bayes Classifier:
+### RandomForest Classifier:
 ![alt text][plot5]
 
-* ***Accuracy: 77%*** 
-* ***Precision:*** 
+* ***Accuracy on testing_set: 79%*** 
 
 ### Support Vector Machine:
 ![alt text][plot6]
 
-* ***Accuracy: 82%***
-* ***Precision:***
+* ***Accuracy on testing_set: 82%***
 
-[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Logistic_Regression_cm.png "LRCM"
-[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/K-NearestNeighbors_cm.png "KNCCM"
-[plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Gaussian_Naive_Bayes_cm.png "NBCCM"
-[plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/models_%26_cms/Support_Vector_Machine.png "SVMCM"
+[plot1]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/cms/xgb_cm.png "xgbcm"
+[plot3]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/cms/knc_cm.png "knccm"
+[plot5]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/cms/rfc_cm.png "rfccm"
+[plot6]: https://github.com/AlexOsokin97/titanic_casualties_proj/blob/master/cms/svc_cm.png "svmcm"
 
 ### Conclusion:
-***All 4 models had pretty good performance but the best one was Support Vector Machine. The reason for its good performance was: firstly, this algorithm can work with infinite dimensions as a result high dimensional data does not affect the algorithm. Secondly, the data was scaled via standardization and thus it removed the possibility of high variance of range, magnitude and unit in the data which could badly affect the algorithm's performance. Thirdly, the support vector machine algorithm can achieve high performance on small datasets. In conclusion, I chose the Support Vector Machine as the best model for this type of problem although, I can say with high confidence that if the dataset was bigger other algorithms might had better results.***
+*** ***
 
 ## File Description:
 * ***Data Analysis [Directory]:*** Contains the datasets used for data analysis and the jupyter notebook file
 * ***Original_DF's [Directory]:*** Contains the original test and train data sets downloaded from kaggle
-* ***models_&_cms [Directory]:*** Contains the saved machine learning models which were used for testing and performance images
+* ***cms [Directory]:*** Contains images of each model's confusion matrix
 * ***Classification Models [Python File]:*** Contains the trained machine learning classification algorithms 
 * ***Complete_df [CSV File]:*** The full complete titanic passenger data set
 * ***data_clean [Python File]:*** Contains the cleaning code of the 'train' dataset
